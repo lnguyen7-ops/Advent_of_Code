@@ -140,14 +140,14 @@ class solution():
 
 	# Part 2 solution
 	def p2(self, name):
-		def recur(bag, count=1, cur_result=0):
+		def recur(bag):
 			if len(bag.children)==0: # bag has no child bags
 				return 0
 			temp = []
 			for i in range(len(bag.children)):
 				child = bag.children[i]
 				children_count = bag.children_count[i]
-				temp.append(children_count + children_count * recur(child, children_count))
+				temp.append(children_count + children_count * recur(child))
 			return sum(temp)
 		# get bag from bags list
 		bag = self.get_bag(name, self.bags)
